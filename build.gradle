@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'dev.dagger.atm'
@@ -16,4 +17,11 @@ ext {
 dependencies {
     implementation "com.google.dagger:dagger:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+}
+
+mainClassName = 'dev.dagger.atm.CommandLineAtm'
+
+// Run with: `gradle run -q --console=plain`
+run {
+    standardInput = System.in
 }
