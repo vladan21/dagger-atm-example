@@ -8,10 +8,10 @@ import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class UserCommand implements Command {
+public final class UserCommand implements Command {
 
-    private final Database database;
     private final Outputter outputter;
+    private final Database database;
 
     @Inject
     public UserCommand(Database database, Outputter outputter) {
