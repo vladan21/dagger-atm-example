@@ -5,17 +5,16 @@ import dev.dagger.atm.service.Command.Status;
 
 import javax.inject.Inject;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class CommandRouter {
 
-    private final Map<String, Command> commands = new HashMap<>();
+    private final Map<String, Command> commandsMap;
 
     @Inject
-    public CommandRouter(Command command) {
-        commands.put(command.key(), command);
+    public CommandRouter(Map<String, Command> commandsMap) {
+        this.commandsMap = commandsMap;
     }
 
     public Status route(String input) {
@@ -25,7 +24,7 @@ public final class CommandRouter {
         }
 
         String commandKey = splitInput.get(0);
-        var command = commands.get(commandKey);
+        var command = commandsMap.get(commandKey);
         if (command == null) {
             return invalidCommand(input);
         }
