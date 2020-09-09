@@ -1,5 +1,6 @@
-package dev.dagger.atm.service;
+package dev.dagger.atm.service.impl;
 
+import dev.dagger.atm.service.Command;
 import dev.dagger.atm.service.Command.Status;
 
 import javax.inject.Inject;

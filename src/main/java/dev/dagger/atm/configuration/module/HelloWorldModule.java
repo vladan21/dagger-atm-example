@@ -3,7 +3,7 @@ package dev.dagger.atm.configuration.module;
 import dagger.Binds;
 import dagger.Module;
 import dev.dagger.atm.service.Command;
-import dev.dagger.atm.service.HelloWorldCommand;
+import dev.dagger.atm.service.impl.HelloWorldCommand;
 
 @Module
 public abstract class HelloWorldModule {

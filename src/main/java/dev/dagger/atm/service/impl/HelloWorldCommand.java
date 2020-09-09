@@ -1,12 +1,18 @@
-package dev.dagger.atm.service;
+package dev.dagger.atm.service.impl;
+
+import dev.dagger.atm.service.Command;
+import dev.dagger.atm.service.Outputter;
 
 import javax.inject.Inject;
 import java.util.List;
 
 public final class HelloWorldCommand implements Command {
 
+    private final Outputter outputter;
+
     @Inject
-    public HelloWorldCommand() {
+    public HelloWorldCommand(Outputter outputter) {
+        this.outputter = outputter;
     }
 
     @Override
@@ -19,7 +25,7 @@ public final class HelloWorldCommand implements Command {
         if (!input.isEmpty()) {
             return Status.INVALID;
         }
-        System.out.println("world!");
+        outputter.output("world!");
         return Status.HANDLED;
     }
 }

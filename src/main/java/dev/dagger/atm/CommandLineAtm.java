@@ -1,6 +1,6 @@
 package dev.dagger.atm;
 
-import dev.dagger.atm.configuration.DaggerCommandRouterFactory;
+import dev.dagger.atm.configuration.factory.DaggerCommandRouterFactory;
 
 import java.util.Scanner;
 

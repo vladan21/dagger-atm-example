@@ -1,9 +1,6 @@
-package dev.dagger.atm.service.impl;
-
-import dev.dagger.atm.service.Command;
+package dev.dagger.atm.service;
 
 public abstract class SingleArgCommand implements Command {
 
-    protected abstract Status handleArg(String arg);
-
+    protected abstract Status handleArg(String username);
 }
