@@ -20,11 +20,6 @@ public class UserCommand implements Command {
     }
 
     @Override
-    public String key() {
-        throw new RuntimeException("Not implemented");
-    }
-
-    @Override
     public Status handleInput(List<String> input) {
         if (input.size() != 2) {
             return Status.INVALID;
