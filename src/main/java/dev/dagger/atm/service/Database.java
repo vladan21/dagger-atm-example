@@ -1,16 +1,19 @@
 package dev.dagger.atm.service;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+@Singleton
 public class Database {
 
     Map<String, Account> accounts = new HashMap<>();
 
     @Inject
     public Database() {
+        System.out.println("Creating a new " + this);
     }
 
     public Account getAccount(String username) {
@@ -18,7 +21,7 @@ public class Database {
     }
 
     public static final class Account {
-        final BigDecimal balance = BigDecimal.ZERO;
+        BigDecimal balance = BigDecimal.ZERO;
         final String userName;
 
         Account(String userName) {
@@ -29,9 +32,13 @@ public class Database {
             return userName;
         }
 
-        public
-        BigDecimal balance() {
+        public BigDecimal balance() {
             return balance;
         }
+
+        public void balance(BigDecimal balance) {
+            this.balance = balance;
+        }
+
     }
 }
