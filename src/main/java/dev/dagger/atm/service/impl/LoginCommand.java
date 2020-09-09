@@ -1,5 +1,7 @@
 package dev.dagger.atm.service.impl;
 
+import dev.dagger.atm.service.Database;
+import dev.dagger.atm.service.Database.Account;
 import dev.dagger.atm.service.Outputter;
 import dev.dagger.atm.service.SingleArgCommand;
 
@@ -9,9 +11,11 @@ import java.util.List;
 public final class LoginCommand extends SingleArgCommand {
 
     private final Outputter outputter;
+    private final Database database;
 
     @Inject
-    public LoginCommand(Outputter outputter) {
+    public LoginCommand(Database database, Outputter outputter) {
+        this.database = database;
         this.outputter = outputter;
     }
 
@@ -22,7 +26,8 @@ public final class LoginCommand extends SingleArgCommand {
 
     @Override
     protected Status handleArg(String username) {
-        outputter.output(String.format("%s is logged in", username));
+        Account account = database.getAccount(username);
+        outputter.output(String.format("%s is logged in with balance %s", username, account.balance()));
         return Status.HANDLED;
     }
 
