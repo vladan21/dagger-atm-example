@@ -1,6 +1,6 @@
-package dev.dagger.atm.service.impl;
+package dev.dagger.atm.service.command.impl;
 
-import dev.dagger.atm.service.Command;
+import dev.dagger.atm.service.command.Command;
 import dev.dagger.atm.service.Database;
 import dev.dagger.atm.service.Outputter;
 

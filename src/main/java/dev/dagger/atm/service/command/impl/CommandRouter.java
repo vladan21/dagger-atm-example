@@ -1,8 +1,8 @@
-package dev.dagger.atm.service.impl;
+package dev.dagger.atm.service.command.impl;
 
-import dev.dagger.atm.service.Command;
-import dev.dagger.atm.service.Command.Result;
-import dev.dagger.atm.service.Command.Status;
+import dev.dagger.atm.service.command.Command;
+import dev.dagger.atm.service.command.Command.Result;
+import dev.dagger.atm.service.command.Command.Status;
 
 import javax.inject.Inject;
 import java.util.Arrays;

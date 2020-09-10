@@ -1,4 +1,6 @@
-package dev.dagger.atm.service;
+package dev.dagger.atm.service.command;
+
+import dev.dagger.atm.service.command.Command;
 
 import java.util.List;
 

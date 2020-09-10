@@ -4,7 +4,7 @@ import dagger.Component;
 import dev.dagger.atm.configuration.module.LoginCommandModule;
 import dev.dagger.atm.configuration.module.SystemOutModule;
 import dev.dagger.atm.configuration.module.UserCommandsModule;
-import dev.dagger.atm.service.impl.CommandRouter;
+import dev.dagger.atm.service.command.impl.CommandRouter;
 
 import javax.inject.Singleton;
 

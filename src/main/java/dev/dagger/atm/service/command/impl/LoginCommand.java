@@ -1,9 +1,9 @@
-package dev.dagger.atm.service.impl;
+package dev.dagger.atm.service.command.impl;
 
 import dev.dagger.atm.service.Database;
 import dev.dagger.atm.service.Database.Account;
 import dev.dagger.atm.service.Outputter;
-import dev.dagger.atm.service.SingleArgCommand;
+import dev.dagger.atm.service.command.SingleArgCommand;
 
 import javax.inject.Inject;
 

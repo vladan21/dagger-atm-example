@@ -4,8 +4,8 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
 import dagger.multibindings.StringKey;
-import dev.dagger.atm.service.Command;
-import dev.dagger.atm.service.impl.LoginCommand;
+import dev.dagger.atm.service.command.Command;
+import dev.dagger.atm.service.command.impl.LoginCommand;
 
 @Module
 public abstract class LoginCommandModule {

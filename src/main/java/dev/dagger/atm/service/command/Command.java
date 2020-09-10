@@ -1,6 +1,6 @@
-package dev.dagger.atm.service;
+package dev.dagger.atm.service.command;
 
-import dev.dagger.atm.service.impl.CommandRouter;
+import dev.dagger.atm.service.command.impl.CommandRouter;
 
 import java.util.List;
 import java.util.Optional;
