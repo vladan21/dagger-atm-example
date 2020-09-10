@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface Command {
 
-    Status handleInput(List<String> input);
+    Result handleInput(List<String> input);
 
     class Result {
         private final Status status;
@@ -18,8 +18,24 @@ public interface Command {
             this.commandRouter = commandRouter;
         }
 
-        static Result enterNestedCommandSet(CommandRouter nestedCommandRouter) {
+        public Result(Status status) {
+            this(status, null);
+        }
+
+        public static Result enterNestedCommandSet(CommandRouter nestedCommandRouter) {
             return new Result(Status.HANDLED, nestedCommandRouter);
+        }
+
+        public static Result invalid() {
+            return new Result(Status.INVALID);
+        }
+
+        public static Result handled() {
+            return new Result(Status.HANDLED);
+        }
+
+        public static Result inputCompleted() {
+            return new Result(Status.INPUT_COMPLETED);
         }
 
         public Status getStatus() {
@@ -33,6 +49,7 @@ public interface Command {
 
     enum Status {
         INVALID,
-        HANDLED
+        HANDLED,
+        INPUT_COMPLETED
     }
 }

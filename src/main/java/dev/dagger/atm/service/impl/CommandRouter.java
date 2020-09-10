@@ -1,6 +1,7 @@
 package dev.dagger.atm.service.impl;
 
 import dev.dagger.atm.service.Command;
+import dev.dagger.atm.service.Command.Result;
 import dev.dagger.atm.service.Command.Status;
 
 import javax.inject.Inject;
@@ -17,7 +18,7 @@ public final class CommandRouter {
         this.commandsMap = commandsMap;
     }
 
-    public Status route(String input) {
+    public Result route(String input) {
         List<String> splitInput = split(input);
         if (splitInput.isEmpty()) {
             return invalidCommand(input);
@@ -29,16 +30,16 @@ public final class CommandRouter {
             return invalidCommand(input);
         }
 
-        var status = command.handleInput(splitInput.subList(1, splitInput.size()));
-        if (status == Status.INVALID) {
+        var result = command.handleInput(splitInput.subList(1, splitInput.size()));
+        if (result.getStatus() == Status.INVALID) {
             System.out.printf("%s : invalid arguments\n", commandKey);
         }
-        return status;
+        return result;
     }
 
-    private Status invalidCommand(String input) {
+    private Result invalidCommand(String input) {
         System.out.printf("Couldn't understand \"%s\". Please try again.\n", input);
-        return Status.INVALID;
+        return Result.invalid();
     }
 
     private static List<String> split(String input) {

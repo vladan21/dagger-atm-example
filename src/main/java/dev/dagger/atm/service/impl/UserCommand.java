@@ -20,14 +20,14 @@ public final class UserCommand implements Command {
     }
 
     @Override
-    public Status handleInput(List<String> input) {
+    public Result handleInput(List<String> input) {
         if (input.size() != 2) {
-            return Status.INVALID;
+            return Result.invalid();
         }
 
         var account = database.getAccount(input.get(0));
         account.balance(new BigDecimal(input.get(1)));
         outputter.output(String.format("%s now has: %s", account.username(), account.balance()));
-        return Status.HANDLED;
+        return Result.handled();
     }
 }
