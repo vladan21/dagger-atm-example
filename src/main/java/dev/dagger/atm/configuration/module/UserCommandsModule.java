@@ -7,7 +7,7 @@ import dagger.multibindings.StringKey;
 import dev.dagger.atm.service.command.Command;
 import dev.dagger.atm.service.command.impl.DepositCommand;
 import dev.dagger.atm.service.command.impl.LogoutCommand;
-import dev.dagger.atm.service.command.impl.WithdrawnCommand;
+import dev.dagger.atm.service.command.impl.WithdrawalCommand;
 
 @Module
 public abstract class UserCommandsModule {
@@ -20,7 +20,7 @@ public abstract class UserCommandsModule {
     @Binds
     @IntoMap
     @StringKey("withdraw")
-    public abstract Command withdrawCommand(WithdrawnCommand withdrawnCommand);
+    public abstract Command withdrawCommand(WithdrawalCommand withdrawalCommand);
 
     @Binds
     @IntoMap

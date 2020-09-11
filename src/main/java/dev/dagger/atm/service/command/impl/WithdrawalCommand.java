@@ -1,37 +1,39 @@
 package dev.dagger.atm.service.command.impl;
 
-import dev.dagger.atm.configuration.qualifiers.MaximumWithdrawn;
-import dev.dagger.atm.configuration.qualifiers.MinimumBalance;
+import dev.dagger.atm.configuration.annotation.qualifier.MinimumBalance;
 import dev.dagger.atm.service.Database;
 import dev.dagger.atm.service.Outputter;
+import dev.dagger.atm.service.WithdrawalLimiter;
 import dev.dagger.atm.service.command.BigDecimalCommand;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
 
-public final class WithdrawnCommand extends BigDecimalCommand {
+public final class WithdrawalCommand extends BigDecimalCommand {
 
     private final Outputter outputter;
     private final Database.Account account;
     private final BigDecimal minimumBalance;
-    private final BigDecimal maximumWithdrawal;
+    private final WithdrawalLimiter withdrawalLimiter;
 
     @Inject
-    public WithdrawnCommand(Outputter outputter,
-                            Database.Account account,
-                            @MinimumBalance BigDecimal minimumBalance,
-                            @MaximumWithdrawn BigDecimal maximumWithdrawal) {
+    public WithdrawalCommand(Outputter outputter,
+                             Database.Account account,
+                             @MinimumBalance BigDecimal minimumBalance,
+                             WithdrawalLimiter withdrawalLimiter) {
         super(outputter);
         this.outputter = outputter;
         this.account = account;
         this.minimumBalance = minimumBalance;
-        this.maximumWithdrawal = maximumWithdrawal;
+        this.withdrawalLimiter = withdrawalLimiter;
     }
 
     @Override
     protected void handleAmount(BigDecimal amount) {
-        if (amount.compareTo(maximumWithdrawal) > 0) {
-            outputter.output(String.format("You cannot withdraw more than %s", maximumWithdrawal));
+        BigDecimal remainingWithdrawalLimit = withdrawalLimiter.getRemainingWithdrawalLimit();
+        if (amount.compareTo(remainingWithdrawalLimit) > 0) {
+            outputter.output(String.format("You may not withdraw %s; You may withdraw %s more in this session",
+                    amount, remainingWithdrawalLimit));
             return;
         }
 
@@ -40,6 +42,7 @@ public final class WithdrawnCommand extends BigDecimalCommand {
             outputter.output(String.format("You don't have enough balance to withdraw %s", amount));
         } else {
             account.withdraw(amount);
+            withdrawalLimiter.recordWithdrawal(amount);
             outputter.output(String.format("your new balance is: %s", account.balance()));
         }
     }

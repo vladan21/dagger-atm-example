@@ -2,8 +2,8 @@ package dev.dagger.atm.configuration.module;
 
 import dagger.Module;
 import dagger.Provides;
-import dev.dagger.atm.configuration.qualifiers.MaximumWithdrawn;
-import dev.dagger.atm.configuration.qualifiers.MinimumBalance;
+import dev.dagger.atm.configuration.annotation.qualifier.MaximumWithdrawal;
+import dev.dagger.atm.configuration.annotation.qualifier.MinimumBalance;
 
 import java.math.BigDecimal;
 
@@ -17,8 +17,8 @@ public abstract class AmountsModule {
     }
 
     @Provides
-    @MaximumWithdrawn
-    public static BigDecimal maximumWithdrawn() {
+    @MaximumWithdrawal
+    public static BigDecimal maximumWithdrawal() {
         return new BigDecimal(1000);
     }
 }

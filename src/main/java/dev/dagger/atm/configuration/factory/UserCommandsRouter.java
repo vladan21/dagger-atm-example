@@ -3,10 +3,12 @@ package dev.dagger.atm.configuration.factory;
 import dagger.BindsInstance;
 import dagger.Module;
 import dagger.Subcomponent;
+import dev.dagger.atm.configuration.annotation.scope.PerSession;
 import dev.dagger.atm.configuration.module.UserCommandsModule;
 import dev.dagger.atm.service.CommandRouter;
 import dev.dagger.atm.service.Database;
 
+@PerSession
 @Subcomponent(modules = UserCommandsModule.class)
 public interface UserCommandsRouter {
     CommandRouter router();

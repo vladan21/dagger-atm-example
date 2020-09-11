@@ -1,4 +1,4 @@
-package dev.dagger.atm.configuration.qualifiers;
+package dev.dagger.atm.configuration.annotation.qualifier;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
