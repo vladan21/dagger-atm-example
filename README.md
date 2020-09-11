@@ -6,4 +6,4 @@ Run by command:
 ./gradlew run -q --console=plain
 
 Or in debug mode:
-./gradlew run -q --console=plain --debug-jvm 
+./gradlew run -q --console=plain --debug-jvm

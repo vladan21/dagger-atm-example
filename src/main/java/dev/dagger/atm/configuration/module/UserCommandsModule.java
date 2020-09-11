@@ -5,7 +5,7 @@ import dagger.Module;
 import dagger.multibindings.IntoMap;
 import dagger.multibindings.StringKey;
 import dev.dagger.atm.service.command.Command;
-import dev.dagger.atm.service.command.impl.UserCommand;
+import dev.dagger.atm.service.command.impl.DepositCommand;
 
 @Module
 public abstract class UserCommandsModule {
@@ -13,5 +13,5 @@ public abstract class UserCommandsModule {
     @Binds
     @IntoMap
     @StringKey("deposit")
-    public abstract Command userCommand(UserCommand userCommand);
+    public abstract Command userCommand(DepositCommand depositCommand);
 }
