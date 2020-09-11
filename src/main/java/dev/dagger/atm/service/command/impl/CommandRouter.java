@@ -1,5 +1,6 @@
 package dev.dagger.atm.service.command.impl;
 
+import dev.dagger.atm.configuration.Init;
 import dev.dagger.atm.service.command.Command;
 import dev.dagger.atm.service.command.Command.Result;
 import dev.dagger.atm.service.command.Command.Status;
@@ -9,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public final class CommandRouter {
+public final class CommandRouter extends Init {
 
     private final Map<String, Command> commandsMap;
 

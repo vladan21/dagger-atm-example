@@ -43,7 +43,7 @@ public interface Command {
         }
 
         public Optional<CommandRouter> getNestedCommandRouter() {
-            return Optional.of(nestedCommandRouter);
+            return Optional.ofNullable(nestedCommandRouter);
         }
     }
 

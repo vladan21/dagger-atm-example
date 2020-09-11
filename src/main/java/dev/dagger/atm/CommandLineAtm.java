@@ -1,18 +1,17 @@
 package dev.dagger.atm;
 
-import dev.dagger.atm.configuration.factory.DaggerCommandRouterFactory;
+import dev.dagger.atm.configuration.factory.DaggerCommandProcessorFactory;
+import dev.dagger.atm.service.CommandProcessor;
 
 import java.util.Scanner;
 
 public class CommandLineAtm {
     public static void main(String[] args) {
-
-        var scanner = new Scanner(System.in);
-        var commandRouter = DaggerCommandRouterFactory.create().commandRouter();
+        Scanner scanner = new Scanner(System.in);
+        CommandProcessor commandProcessor = DaggerCommandProcessorFactory.create().commandProcessor();
 
         while (scanner.hasNextLine()) {
-            commandRouter.route(scanner.nextLine());
+            commandProcessor.process(scanner.nextLine());
         }
-
     }
 }

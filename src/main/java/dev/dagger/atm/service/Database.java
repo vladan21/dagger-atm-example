@@ -1,5 +1,7 @@
 package dev.dagger.atm.service;
 
+import dev.dagger.atm.configuration.Init;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.math.BigDecimal;
@@ -7,13 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Singleton
-public class Database {
+public class Database extends Init {
 
     Map<String, Account> accounts = new HashMap<>();
 
     @Inject
     public Database() {
-        System.out.println("Creating a new " + this);
     }
 
     public Account getAccount(String username) {

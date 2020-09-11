@@ -1,14 +1,15 @@
 package dev.dagger.atm.service.command.impl;
 
-import dev.dagger.atm.service.command.Command;
+import dev.dagger.atm.configuration.Init;
 import dev.dagger.atm.service.Database;
 import dev.dagger.atm.service.Outputter;
+import dev.dagger.atm.service.command.Command;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.List;
 
-public final class UserCommand implements Command {
+public final class UserCommand extends Init implements Command {
 
     private final Outputter outputter;
     private final Database database;
