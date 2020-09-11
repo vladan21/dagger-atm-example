@@ -37,9 +37,12 @@ public class Database extends Init {
             return balance;
         }
 
-        public void balance(BigDecimal balance) {
-            this.balance = balance;
+        public void deposit(BigDecimal amount) {
+            balance = balance.add(amount);
         }
 
+        public void withdraw(BigDecimal amount) {
+            balance = balance.subtract(amount);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package dev.dagger.atm.service.command.impl;
+package dev.dagger.atm.service;
 
 import dev.dagger.atm.configuration.Init;
 import dev.dagger.atm.service.command.Command;

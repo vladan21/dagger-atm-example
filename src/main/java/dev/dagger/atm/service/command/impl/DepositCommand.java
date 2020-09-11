@@ -21,7 +21,7 @@ public final class DepositCommand extends BigDecimalCommand {
 
     @Override
     protected void handleAmount(BigDecimal amount) {
-        account.balance(amount);
+        account.deposit(amount);
         outputter.output(String.format("%s now has: %s", account.username(), account.balance()));
     }
 }

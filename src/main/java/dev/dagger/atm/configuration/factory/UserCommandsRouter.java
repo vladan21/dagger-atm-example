@@ -4,8 +4,8 @@ import dagger.BindsInstance;
 import dagger.Module;
 import dagger.Subcomponent;
 import dev.dagger.atm.configuration.module.UserCommandsModule;
+import dev.dagger.atm.service.CommandRouter;
 import dev.dagger.atm.service.Database;
-import dev.dagger.atm.service.command.impl.CommandRouter;
 
 @Subcomponent(modules = UserCommandsModule.class)
 public interface UserCommandsRouter {
