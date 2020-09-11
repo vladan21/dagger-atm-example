@@ -11,11 +11,11 @@ public interface Command {
 
     class Result {
         private final Status status;
-        private final CommandRouter commandRouter;
+        private final CommandRouter nestedCommandRouter;
 
-        public Result(Status status, CommandRouter commandRouter) {
+        private Result(Status status, CommandRouter nestedCommandRouter) {
             this.status = status;
-            this.commandRouter = commandRouter;
+            this.nestedCommandRouter = nestedCommandRouter;
         }
 
         public Result(Status status) {
@@ -42,8 +42,8 @@ public interface Command {
             return status;
         }
 
-        public Optional<CommandRouter> getCommandRouter() {
-            return Optional.of(commandRouter);
+        public Optional<CommandRouter> getNestedCommandRouter() {
+            return Optional.of(nestedCommandRouter);
         }
     }
 
